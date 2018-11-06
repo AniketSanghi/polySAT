@@ -369,9 +369,10 @@ long long int MOMS()
 int unitPropagate(long long int choice)
 {
 	
-	long long int size = newFormula.size();
-	for(i=0; i<size; ++i)
+	long long int size = watchedlist[abs(choice)].size();
+	for(long long int p=0; p<size; ++p)
 	{
+		i = watchedlist[abs(choice)][p];
 		//If this clause is already SAT
 		if(newFormula[i][0].t == 1 ) continue;
 
