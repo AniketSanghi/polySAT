@@ -648,7 +648,7 @@ int solve()
 		{
 			//Apply MOMS to choose efficient variable
 			long long int choice = MOMS();
-			cout<<choice<<" ";
+			// cout<<choice<<" ";
 			//Assign it true value
 			block x;
 			x.v = unitClause.size();
@@ -661,7 +661,7 @@ int solve()
 
 			if(check()) return 1;
 		}
-		cout<<endl;
+		// cout<<endl;
 		
 		
 		while(1)
@@ -684,8 +684,8 @@ int solve()
 
 		if(check()) return 1;	
 
-		cout<<assumedIndexes.size()<<" "<<conflict<<endl;
-		for(i=0;i<assumedIndexes.size();++i) cout<<assumedIndexes[i].t; cout<<endl;
+		// cout<<assumedIndexes.size()<<" "<<conflict<<endl;
+		// for(i=0;i<assumedIndexes.size();++i) cout<<assumedIndexes[i].t; cout<<endl;
 		
 	}
 	
@@ -787,17 +787,20 @@ int main(int argc, char *argv[])
 	if(satisfiability == 1) cout<<"SAT\n";
 	else cout<<"UNSAT\n";
 
-	for(i=0;i<unitClause.size();++i) 
-		cout<<"#"<<unitClause[i]<<endl;
+	sort(unitClause.begin(),unitClause.end(),absoluteCompare);
 
-	for( i=0; i<newFormula.size(); ++i)
-	{
-		for( j=0; j<newFormula[i].size() ; ++j)
-		{
-			cout<<"("<<newFormula[i][j].v<<","<<newFormula[i][j].t<<") ";
-		}
-		cout<<endl;
-	}
+	for(i=0;i<unitClause.size();++i) 
+		cout<<unitClause[i]<<" ";
+	cout<<endl;
+
+	// for( i=0; i<newFormula.size(); ++i)
+	// {
+	// 	for( j=0; j<newFormula[i].size() ; ++j)
+	// 	{
+	// 		cout<<"("<<newFormula[i][j].v<<","<<newFormula[i][j].t<<") ";
+	// 	}
+	// 	cout<<endl;
+	// }
 
 	return 0;
 }
