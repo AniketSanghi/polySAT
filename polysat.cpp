@@ -303,7 +303,7 @@ long long int MOMS()
 	//Calculate minimum length of clauses
 	long long int min = 1000000;
 	long long int temporary = length.size();
-	for(i=0;i<temporary;++i) if(length[i] < min && length[i]>1) min=length[i];
+	for(i=0;i<temporary;++i) if(length[i] < min && length[i]>1 && newFormula[i][0].t != 1) min=length[i];
 
 	while(1)
 	{	
@@ -362,6 +362,64 @@ long long int MOMS()
 
 }
 
+
+//Another decision procedure that just selects maximum frequency variable
+long long int MaxFrequency()
+{
+	long long int var[variables + 1][2];
+	long long int valIndex,sign;
+	
+
+	long long int mainsize = newFormula.size();
+
+	for(i=0;i<variables+1;++i) var[i][0]=var[i][1]=0;
+
+	//Checking how many times each variable occured in minimum length clauses
+	for(i=0; i<mainsize; ++i)
+	{
+		
+		if(newFormula[i][0].t == 1 ) continue;
+
+		long long int newsize = newFormula[i].size();
+		for(j=0; j<newsize ;++j)
+		{
+			if(newFormula[i][j].t == 0)
+			{
+				if(newFormula[i][j].v > 0) var[newFormula[i][j].v][0]++;
+				else var[-newFormula[i][j].v][1]++;
+			} 
+		}
+		
+	}
+
+	long long int max=0;
+	sign=-1;
+	valIndex=-1;
+
+	//Finding which variable occured the most no. of times
+	for(i=0; i<variables+1; ++i)
+	{
+		if(var[i][0]  > max)
+		{
+			max = var[i][0];
+			valIndex = i;
+			sign = 0;
+		}
+		if(var[i][1] > max)
+		{
+			max = var[i][1];
+			valIndex = i;
+			sign = 1;
+		}
+	}
+
+	if(sign == 0)
+		return valIndex;
+	else
+		return -valIndex;
+
+
+}
 
 
 
