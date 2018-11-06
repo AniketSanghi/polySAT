@@ -336,18 +336,28 @@ long long int MOMS()
 		//Finding which variable occured the most no. of times
 		for(i=0; i<variables+1; ++i)
 		{
-			if(var[i][0]  > max)
+			if(var[i][0] + var[i][0]  > max)
 			{
-				max = var[i][0];
+				max = var[i][0]+var[i][1];
 				valIndex = i;
-				sign = 0;
+				if(var[i][0]>var[i][1]) sign = 0;
+				else sign = 1;
 			}
-			if(var[i][1] > max)
-			{
-				max = var[i][1];
-				valIndex = i;
-				sign = 1;
-			}
+
+			// The following method is giving answer to 1st and 2nd question asked in 1300, 1194 secs resp
+			// if(var[i][0]  > max)
+			// {
+			// 	max = var[i][0];
+			// 	valIndex = i;
+			// 	sign = 0;
+			// }
+			// if(var[i][1] > max)
+			// {
+			// 	max = var[i][1];
+			// 	valIndex = i;
+			// 	sign = 1;
+			// }
+			
 		}
 
 		if(valIndex != -1) break;
@@ -652,21 +662,7 @@ int solve()
 			if(check()) return 1;
 		}
 		cout<<endl;
-		// for(k=0;k<assumedIndexes.size();++k) cout<<"("<<assumedIndexes[k].v<<","<<assumedIndexes[k].t<<")"; cout<<endl;
-		// if(assumedIndexes.size()==140 && assumedIndexes.back().t==1)
-		// {
-		// 	for(i=0;i<unitClause.size();++i) 
-		// 		cout<<"#"<<unitClause[i]<<endl;
-
-		// 	for( i=0; i<newFormula.size(); ++i)
-		// 	{
-		// 		for( j=0; j<newFormula[i].size() ; ++j)
-		// 		{
-		// 			cout<<"("<<newFormula[i][j].v<<","<<newFormula[i][j].t<<") ";
-		// 		}
-		// 		cout<<endl;
-		// 	}
-		// }
+		
 		
 		while(1)
 		{
