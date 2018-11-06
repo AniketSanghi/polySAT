@@ -1,4 +1,4 @@
-# polysat
+# polySAT
 A SAT solver which implements DPLL algorithm.
 Made under an assignment done under Prof. Subhajit Roy
 
