@@ -511,7 +511,7 @@ int Propogate(long long int choice)
 	while(1)
 	{
 		conflict = unitPropagate(unitClause[track]);		//Perform Unit Propogation
-		pureLiteralSimplification();
+		// pureLiteralSimplification();
 		size = unitClause.size();
 
 		if(conflict == -1) return -1;
