@@ -543,9 +543,10 @@ void undo(long long int ind)
 {
 	for(i=unitClause.size()-1;i>=ind;--i)
 	{
-		long long int size = newFormula.size();
-		for(j=0;j<size;++j)
+		long long int size = watchedlist[abs(unitClause[i])].size();
+		for(long long int p=0;p<size;++p)
 		{
+			j = watchedlist[abs(unitClause[i])][p];
 			long long int newsize = newFormula[j].size();
 			for(k=0;k<newsize;++k)
 			{
